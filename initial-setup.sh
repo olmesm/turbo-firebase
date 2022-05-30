@@ -14,7 +14,7 @@ if [ -z "$(asdf --version 2> /dev/null)" ]; then
     exit 1
 fi
 
-echo "nodejs 18.2.0
+echo "nodejs 16.15.0
 firebase 11.0.1
 jq 1.6
 gcloud 386.0.0" > .tool-versions
@@ -40,7 +40,8 @@ echo ">> Creating a $FRONT_END project with vite"
 if [ "$FRONT_END" = 'solidjs' ]; then
     npx degit solidjs/templates/ts apps/web
 else
-    npm create vite@latest -- --template react-ts
+    npm create vite@latest -- --template react-ts web
+    mv web apps/web
 fi
 
 echo ">> Cleaning up $FRONT_END files"
@@ -69,7 +70,7 @@ echo "export const config = \"config\";" > packages/config/index.ts
 
 echo ">> Setup functions
 Manually run:
-  $ firebase init functions
+  $ cd $DIR; firebase init functions
 
 Selecting:
 - [yes] typescript
@@ -77,45 +78,36 @@ Selecting:
 - [no] install dependencies
 "
 
-echo ""
-while [ true ] ; do
-    read -t 3 -n 1
-    if [ $? = 0 ] ; then
-        echo ">> Continue..."
-        break;
-    else
-        echo ">> Waiting for functions install. Press enter here when complete.";
-    fi
-done
+read -p ">> Waiting for functions install. Press enter here when complete." < /dev/tty
 
 mv functions apps/functions
 
 jq '.functions += {"source": "apps/functions"}' firebase.json > /tmp/firebase.json
 mv /tmp/firebase.json firebase.json
 
-echo ">> Setup firestore and storage
+echo ">> Setup firestore
 Manually run:
-  $ firebase init firestore storage
+  $ cd $DIR; firebase init firestore
 
 Selecting:
 - [yes] defaults
 "
 
-echo ""
-while [ true ] ; do
-    read -t 3 -n 1
-    if [ $? = 0 ] ; then
-        echo ">> Continue..."
-        break;
-    else
-        echo ">> Waiting for firestore and storage install. Press enter here when complete.";
-    fi
-done
+read -p ">> Waiting for firestore install. Press enter here when complete." < /dev/tty
 
+echo ">> Setup storage
+Manually run:
+  $ cd $DIR; firebase init storage
+
+Selecting:
+- [yes] defaults
+"
+
+read -p ">> Waiting for storage install. Press enter here when complete." < /dev/tty
 
 echo ">> Setup hosting
 Manually run:
-  $ firebase init hosting
+  $ cd $DIR; firebase init hosting
 
 Selecting:
 - [Public directory] apps/web/dist
@@ -123,15 +115,6 @@ Selecting:
 - [no] Set up automatic builds and deploys with GitHub
 "
 
-echo ""
-while [ true ] ; do
-    read -t 3 -n 1
-    if [ $? = 0 ] ; then
-        echo ">> Continue..."
-        break;
-    else
-        echo ">> Waiting for hosting install. Press enter here when complete.";
-    fi
-done
+read -p ">> Waiting for hosting install. Press enter here when complete." < /dev/tty
 
 npm install
