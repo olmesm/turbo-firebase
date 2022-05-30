@@ -13,5 +13,6 @@ curl -s https://raw.githubusercontent.com/olmesm/turbo-firebase/main/initial-set
 
 - [ ] standard readme
 - [ ] tests
+- [ ] github actions
 - [ ] components for web
 - [ ] components for functions

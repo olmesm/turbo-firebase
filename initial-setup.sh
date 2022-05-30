@@ -82,6 +82,11 @@ read -p ">> Waiting for functions install. Press enter here when complete." < /d
 
 mv functions apps/functions
 
+echo ">> Correcting functions dev command"
+jq '(.scripts |= (. + {"dev":.serve}|del(.serve)))' apps/functions/package.json > /tmp/package.json
+mv /tmp/package.json apps/functions/package.json
+
+echo ">> Correcting functions source"
 jq '.functions += {"source": "apps/functions"}' firebase.json > /tmp/firebase.json
 mv /tmp/firebase.json firebase.json
 
