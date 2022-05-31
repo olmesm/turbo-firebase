@@ -1,6 +1,6 @@
 # Turbo firebase
 
-Quick script to setup a turbo-repo, firebase and solidjs/react repository from their respective sources.
+Quick script to setup a [turborepo](https://turborepo.org/) monorepo, [firebase](https://firebase.com), and [solidjs](https://www.solidjs.com) or [react](https://reactjs.org/) with [vite](https://vitejs.dev/) repository from their respective sources.
 
 ---
 
@@ -12,7 +12,7 @@ Requires:
 - [curl](https://curl.se/)
 
 ```bash
-curl -s https://raw.githubusercontent.com/olmesm/turbo-firebase/main/initial-setup.sh | bash -s <directory-name> [react|solidjs]
+curl -s https://raw.githubusercontent.com/olmesm/turbo-firebase/main/initial-setup.sh | bash -s <app-directory-name> [react|solidjs]
 ```
 
 ## TODO
