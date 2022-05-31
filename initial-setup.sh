@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ROOT=$(pwd)
-DIR=$1
+DIR=${1:-"."}
 FRONT_END=${2:-"react"}
 
 echo ">> Creating directory $DIR"

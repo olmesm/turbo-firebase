@@ -13,7 +13,7 @@ Requires:
 
 ```bash
 curl -s https://raw.githubusercontent.com/olmesm/turbo-firebase/main/initial-setup.sh | \
-    bash -s <app-directory-name> [react|solidjs]
+    bash -s [app-directory-name] [react|solidjs]
 ```
 
 ## TODO
