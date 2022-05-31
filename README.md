@@ -12,7 +12,8 @@ Requires:
 - [curl](https://curl.se/)
 
 ```bash
-curl -s https://raw.githubusercontent.com/olmesm/turbo-firebase/main/initial-setup.sh | bash -s <app-directory-name> [react|solidjs]
+curl -s https://raw.githubusercontent.com/olmesm/turbo-firebase/main/initial-setup.sh | \
+    bash -s <app-directory-name> [react|solidjs]
 ```
 
 ## TODO
