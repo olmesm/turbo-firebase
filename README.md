@@ -1,5 +1,11 @@
 # Turbo firebase
 
+Quick script to setup a turbo-repo, firebase and solidjs/react repository from their respective sources.
+
+---
+
+## Running
+
 Requires:
 
 - [asdf](https://asdf-vm.com)
