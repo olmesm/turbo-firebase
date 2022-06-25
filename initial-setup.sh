@@ -15,7 +15,7 @@ if [ -z "$(asdf --version 2> /dev/null)" ]; then
 fi
 
 echo "nodejs 16.15.0
-firebase 11.0.1
+firebase 11.1.0
 jq 1.6
 gcloud 386.0.0" > .tool-versions
 
